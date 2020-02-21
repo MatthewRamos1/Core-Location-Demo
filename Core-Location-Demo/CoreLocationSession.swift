@@ -17,12 +17,16 @@ class CoreLocationSession: NSObject {
         super.init() //ask
         locationManager = CLLocationManager()
         locationManager.delegate = self
+        
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
 }
 
 extension CoreLocationSession: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("did update")
+        print("did update: \(locations)")
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
