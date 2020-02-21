@@ -14,8 +14,22 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        convertCoordinateToPlacemark()
+        convertPlaceNameToCoordinate()
+        
     }
+    
+    private func convertCoordinateToPlacemark() {
+        let location = Location.getLocations()[2]
+            locationSession.convertCoordinateToPlacemark(coordinate: location.coordinate)
+    }
+    
+    private func convertPlaceNameToCoordinate() {
+        locationSession.convertPlacemarkToCoordinate(addressString: "queens plaza")
+    }
+
+    
+    
 
 
 }
