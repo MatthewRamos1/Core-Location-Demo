@@ -21,5 +21,36 @@ class CoreLocationSession: NSObject {
 }
 
 extension CoreLocationSession: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("did update")
+    }
     
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("did fail")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .authorizedAlways:
+            print("authorizedAlways")
+        case .authorizedWhenInUse:
+            print("authorizedWhenInUse")
+        case .denied:
+            print("denied")
+        case .notDetermined:
+            print("notDetermined")
+        case .restricted:
+            print("restricted")
+        default:
+            break
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        print("did enter region")
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion) {
+        print("did exit region")
+    }
 }
